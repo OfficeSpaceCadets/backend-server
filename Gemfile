@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
-
 gem 'rails', '~> 4.2.1'
 gem 'mysql2', '~> 0.4.3'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '~> 1.3.0'
+gem 'haml-rails', '~> 0.9.0'
 
 gem 'turbolinks', '~> 2.5.3'
 gem 'jbuilder', '~> 2.0'
