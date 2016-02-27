@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :user do
-    name  'John Doe'
-    email 'john.doe@example.com'
-    username 'john.doe'
+    sequence(:name) { |n| "John Doe #{n}" }
+    username { name.split.join('.') }
+    email { "#{username}@example.com" }
   end
 end

@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'PingController' do
-  let!(:user1) { create :user, name: 'John' }
-  let!(:user2) { create :user, name: 'Jane' }
+  let!(:user1) { create :user }
+  let!(:user2) { create :user }
   let(:id1) { user1.id }
   let(:id2) { user2.id }
   let(:good_auth_token) { 'super secret' }
