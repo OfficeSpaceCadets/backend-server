@@ -1,0 +1,9 @@
+%h1 Sessions
+%p These are the pairing sessions that we know:
+
+%ul
+- @pairing_sessions.each do |session|
+  %li
+    = (session[:users]).join(', ')
+    = "[#{session[:start_time]} to #{session[:end_time]}]"
+
