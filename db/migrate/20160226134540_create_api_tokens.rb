@@ -1,7 +1,7 @@
 class CreateApiTokens < ActiveRecord::Migration
   def up
     create_table :api_tokens do |t|
-      t.string :token
+      t.string :token, null: false
     end
   end
 
