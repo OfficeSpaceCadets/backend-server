@@ -27,6 +27,9 @@ ActiveRecord::Schema.define(version: 20160227121742) do
     t.integer "user_id",            limit: 4, null: false
   end
 
+  add_index "pairing_sessions_users", ["pairing_session_id"], name: "fk_rails_d4d4e72ec2", using: :btree
+  add_index "pairing_sessions_users", ["user_id"], name: "fk_rails_2223028d7a", using: :btree
+
   create_table "settings", force: :cascade do |t|
     t.string "name",  limit: 255, null: false
     t.string "value", limit: 255, null: false
@@ -38,4 +41,6 @@ ActiveRecord::Schema.define(version: 20160227121742) do
     t.string "email",    limit: 255, null: false
   end
 
+  add_foreign_key "pairing_sessions_users", "pairing_sessions"
+  add_foreign_key "pairing_sessions_users", "users"
 end

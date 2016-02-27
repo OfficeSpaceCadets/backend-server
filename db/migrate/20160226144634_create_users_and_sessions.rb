@@ -15,9 +15,15 @@ class CreateUsersAndSessions < ActiveRecord::Migration
       t.belongs_to :pairing_session, null: false
       t.belongs_to :user, null: false
     end
+
+    add_foreign_key :pairing_sessions_users, :users
+    add_foreign_key :pairing_sessions_users, :pairing_sessions
   end
 
   def down
+    remove_foreign_key :pairing_sessions_users, :users
+    remove_foreign_key :pairing_sessions_users, :pairing_sessions
+
     drop_table :pairing_sessions_users
     drop_table :pairing_sessions
     drop_table :users
