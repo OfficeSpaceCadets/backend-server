@@ -3,15 +3,11 @@ class Api::PingController < Api::BaseController
   before_filter :render_400_if_no_ids_given
 
   def create
-    PairingSession.create! users: users, start_time: Time.now, end_time: Time.now
+    PairingSessionHandler.new(params[:ids]).create_or_update_session
     render nothing: true, status: 201
   end
 
   private 
-
-  def users
-    User.where id: params[:ids]
-  end
 
   def render_404_if_unauthenticated
     authenticate_or_request_with_http_token do |token, options|
