@@ -14,7 +14,7 @@ The authorized tokens for production are found in the api\_tokens database. The 
 
 The API calls will require authentication via a token in the HTTP header of each request.
 
-### POST /ping
+### POST /api/ping
 
 This is the session creation and keep alive for all pairing sessions.
 
@@ -23,7 +23,7 @@ This is the session creation and keep alive for all pairing sessions.
     }
 
 
-### GET /settings
+### GET /api/settings (coming soon...)
 
 This is the means of pushing out settings to any and all devices attached to this server.
 
