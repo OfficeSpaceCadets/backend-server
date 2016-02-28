@@ -1,4 +1,4 @@
-class PingController < ApplicationController
+class PingController < ApiController
   before_filter :render_404_if_unauthenticated
   before_filter :render_400_if_no_ids_given
 
