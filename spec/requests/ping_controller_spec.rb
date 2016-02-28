@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'PingController' do
+RSpec.describe 'Api::PingController' do
   let!(:user1) { create :user }
   let!(:user2) { create :user }
   let(:id1) { user1.id }
@@ -16,7 +16,7 @@ RSpec.describe 'PingController' do
 
   describe '#create' do
     before do
-      post ping_path, payload, headers
+      post api_ping_path, payload, headers
     end
 
     describe 'authenticated request' do
