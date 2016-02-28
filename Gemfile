@@ -23,3 +23,5 @@ group :development, :test do
   gem 'factory_girl_rails', '~> 4.5.0'
 end
 
+ruby "2.3.0"
+
