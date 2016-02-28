@@ -19,6 +19,7 @@ group :development, :test do
   gem 'byebug', '~> 8.2.2'
   gem 'spring', '~> 1.6.3'
   gem 'rspec-rails', '~> 3.4.2'
+  gem 'timecop', '~> 0.8.0'
   gem 'shoulda-matchers', '~> 2.8.0'
   gem 'database_cleaner', '~> 1.5.1'
   gem 'factory_girl_rails', '~> 4.5.0'
