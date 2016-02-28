@@ -49,6 +49,7 @@ test:
 #
 production:
   <<: *default
-  database: backend-server_production
-  username: backend-server
-  password: <%= ENV['BACKEND-SERVER_DATABASE_PASSWORD'] %>
+  host: <%= ENV['CLEARDB_DATABASE_URL'] %>
+  database: <%= ENV['CLEARDB_DATABASE_NAME'] %>
+  username: <%= ENV['CLEARDB_DATABASE_USERNAME'] %>
+  password: <%= ENV['CLEARDB_DATABASE_PASSWORD'] %>
