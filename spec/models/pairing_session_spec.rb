@@ -60,5 +60,35 @@ RSpec.describe PairingSession do
         expect(last_session.id).to eq(expected_session.id)
       end
     end
+
+    context 'multiple sessions with the multipl users' do
+      it 'should return that session' do    
+        session1 = nil
+        session2 = nil
+        session3 = nil
+        session4 = nil
+
+        Timecop.freeze 20.minutes.ago do
+          session1 = create :pairing_session, users: [user1, user2], start_time: Time.now, end_time: Time.now
+        end
+        Timecop.freeze 15.minutes.ago do
+          session2 = create :pairing_session, users: [user2, user3], start_time: Time.now, end_time: Time.now
+        end
+        Timecop.freeze 10.minutes.ago do
+          session3 = create :pairing_session, users: [user1, user2], start_time: Time.now, end_time: Time.now
+        end
+        Timecop.freeze 2.minutes.ago do
+          session4 = create :pairing_session, users: [user3, user1], start_time: Time.now, end_time: Time.now
+        end
+        session5 = create :pairing_session, users: [user1, user2], start_time: Time.now, end_time: Time.now
+
+        expect(PairingSession.last_session_for([user1.id, user2.id]).id).to eq(session5.id)
+        expect(PairingSession.last_session_for([user2.id, user1.id]).id).to eq(session5.id)
+        expect(PairingSession.last_session_for([user2.id, user3.id]).id).to eq(session2.id)
+        expect(PairingSession.last_session_for([user3.id, user2.id]).id).to eq(session2.id)
+        expect(PairingSession.last_session_for([user3.id, user1.id]).id).to eq(session4.id)
+        expect(PairingSession.last_session_for([user1.id, user3.id]).id).to eq(session4.id)
+      end
+    end
   end
 end
