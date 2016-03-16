@@ -3,6 +3,7 @@ class Api::PingController < Api::BaseController
   before_filter :render_400_if_no_ids_given
 
   def create
+    byebug
     PairingSessionHandler.new(params[:ids]).create_or_update_session
     render nothing: true, status: 201
   end

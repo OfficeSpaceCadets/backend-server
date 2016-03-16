@@ -1,8 +1,6 @@
 class PairingSessionHandler
-  attr_reader :user_ids
-
-  def initialize(user_ids)
-    @user_ids = user_ids
+  def initialize(user_external_ids)
+    @user_external_ids = user_external_ids
   end
 
   def create_or_update_session
@@ -33,6 +31,10 @@ class PairingSessionHandler
   end
 
   def users
-    User.where external_id: user_ids
+    @users ||= User.where external_id: @user_external_ids
+  end
+
+  def user_ids
+    users.map { |u| u.id }
   end
 end

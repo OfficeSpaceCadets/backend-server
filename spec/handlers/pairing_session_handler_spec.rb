@@ -5,10 +5,10 @@ RSpec.describe PairingSessionHandler do
   let!(:user2) { create :user }
   let!(:user3) { create :user }
   let(:user_ids) { [user1.id, user2.id] }
+  let(:user_external_ids) { [user1.external_id, user2.external_id] }
   let!(:current_time) { Time.now }
 
-  subject { described_class.new user_ids }
-
+  subject { described_class.new user_external_ids }
   
   shared_examples 'created a valid session' do
     it 'should create a session that contains the users' do
@@ -75,7 +75,7 @@ RSpec.describe PairingSessionHandler do
       before do
         Timecop.freeze current_time
 
-        described_class.new([user1.id, user3.id]).create_or_update_session
+        described_class.new([user1.external_id, user3.external_id]).create_or_update_session
         subject.create_or_update_session
       end
 
