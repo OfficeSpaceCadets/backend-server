@@ -33,6 +33,6 @@ class PairingSessionHandler
   end
 
   def users
-    User.where id: user_ids
+    User.where external_id: user_ids
   end
 end

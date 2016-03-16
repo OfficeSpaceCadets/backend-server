@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160227121742) do
+ActiveRecord::Schema.define(version: 20160316015826) do
 
   create_table "api_tokens", force: :cascade do |t|
     t.string "token", limit: 255, null: false
@@ -36,9 +36,10 @@ ActiveRecord::Schema.define(version: 20160227121742) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name",     limit: 255, null: false
-    t.string "username", limit: 255, null: false
-    t.string "email",    limit: 255, null: false
+    t.string "name",        limit: 255, null: false
+    t.string "username",    limit: 255, null: false
+    t.string "email",       limit: 255, null: false
+    t.string "external_id", limit: 255
   end
 
   add_foreign_key "pairing_sessions_users", "pairing_sessions"
