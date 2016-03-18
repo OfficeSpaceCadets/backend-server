@@ -16,6 +16,7 @@
     $('.latest_session .duration').empty().append(data['duration']);
     $('.latest_session .start_time').empty().append(data['start_time']);
     // clock_timer = setInterval(update_clock(data['start_time']), 1000);
+    update_clock(data['start_time']);
   }
 
   function update_clock(start_time) {
