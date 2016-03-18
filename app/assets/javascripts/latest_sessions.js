@@ -7,11 +7,11 @@
   }
 
   function populate_pairing_data(data) {
-    $('.latest_session .users').empty();
-    $.each(data['users'], function(index, user) {
-      var user_data = user.name;
-      $('.latest_session .users').append(user_data);
-    });
+    $('.pair-clock').empty().append(data['pair_clock']);
+    $('.photos .photo:first img').attr('src', '/images/' + data['users'][0]['external_id'] + '.jpg');
+    $('.photos .photo:first figcaption').empty().append(data['users'][0]['name']);
+    $('.photos .photo:last img').attr('src', '/images/' + data['users'][1]['external_id'] + '.jpg');
+    $('.photos .photo:last figcaption').empty().append(data['users'][1]['name']);
 
     $('.latest_session .duration').empty().append(data['duration']);
     $('.latest_session .start_time').empty().append(data['start_time']);

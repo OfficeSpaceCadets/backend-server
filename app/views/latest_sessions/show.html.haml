@@ -1,9 +1,12 @@
 - content_for(:content) do
-  %h1 Latest session!
-  .latest_session
-    .users
-    .duration
-    .start_time
+  .pair-clock 12:34:56
+  .photos
+    %figure{class: "photo"}
+      %img
+      %figcaption
+    %figure{class: "photo"}
+      %img
+      %figcaption
 
 - content_for(:javascript) do
   = javascript_include_tag 'latest_sessions'

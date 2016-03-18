@@ -1,0 +1,63 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,100);
+
+* {
+  margin:0;
+  padding:0;
+  font-family: 'Roboto';
+  font-weight: 300;
+}
+
+body {
+  background: white;
+  color: rgba(0, 0, 0, 0.7);
+  font-family: sans-serif;
+  padding: 5%;
+  font-size:100%;
+}
+
+.pair-clock {
+  position: absolute;
+  left: 50%;
+  top: 2.5%;
+  width: 50.0vw;
+  margin-left:-25.0vw;
+  text-align: center;
+  font-size: 4.5vw;
+}
+
+.pair-clock:before {
+  content: "Pair Timer";
+  display: block;
+  font-size:50%;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.25);
+}
+
+.photos {
+  display:flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.photo {
+  flex-basis: 50%;
+  flex-grow: 1;
+  box-sizing: border-box;
+  padding: 2%;
+}
+
+.photo > img {
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 50%;
+  border: 0.5vw solid rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0.25vw 2vw 0 rgba(0, 0, 0, 0.25);
+}
+
+.photo > figcaption {
+  display:block;
+  text-align: center;
+  font-size: 4.0vw;
+  font-weight: 100;
+}
+
