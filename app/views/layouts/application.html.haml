@@ -2,8 +2,9 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title BackendServer
+    %title Office Space Cadets : Pairing
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = yield(:css)
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body

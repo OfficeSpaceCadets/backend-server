@@ -8,5 +8,8 @@
       %img
       %figcaption
 
+-content_for(:css) do
+  = stylesheet_link_tag 'latest_sessions'
+
 - content_for(:javascript) do
   = javascript_include_tag 'latest_sessions'
