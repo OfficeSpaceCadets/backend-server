@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   namespace :api do
     post '/ping', to: 'ping#create'
     get '/latest_session', to: 'latest_session#show'
+    get '/todays_sessions', to: 'todays_sessions#index'
   end
 
   root to: 'home#index'

@@ -17,15 +17,15 @@
             = 'Session End'
           %th
             = 'Session Duration'
-      - @pairing_sessions.each do |session|
-        %tr
-          %td.user{:class => "#{session[:users][0]}"}
-            = session[:users][0]
-          %td.user{:class => "#{session[:users][0]}"}
-            = session[:users][1]
-          %td.time
-            = session[:start_time]
-          %td.time
-            = session[:end_time]
-          %td.duration
-            = session[:duration]
+      %tbody{id: 'pairing_sessions_table'}
+
+- content_for(:javascript) do
+  %script{id: 'pairing_session_template', type: 'text/x-custom-template'}
+    %tr
+      %td.user
+      %td.user
+      %td.time
+      %td.time
+      %td.duration
+
+  = javascript_include_tag 'home'
