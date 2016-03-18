@@ -10,7 +10,7 @@ RSpec.describe PairingSessionHandler do
 
   subject { described_class.new user_external_ids }
   
-  shared_examples 'created a valid session' do
+  shared_examples 'created a new valid session' do
     it 'should create a session that contains the users' do
       actual_user_ids = pairing_session.users.pluck :id
       
@@ -43,7 +43,7 @@ RSpec.describe PairingSessionHandler do
         expect(PairingSession.count).to be(1)
       end
 
-      it_behaves_like 'created a valid session'
+      it_behaves_like 'created a new valid session'
     end
 
     context 'previous session exists but was a while ago' do
@@ -66,7 +66,7 @@ RSpec.describe PairingSessionHandler do
         expect(PairingSession.count).to be(2)
       end
 
-      it_behaves_like 'created a valid session'
+      it_behaves_like 'created a new valid session'
     end
 
     context 'previous session exists only a few seconds ago but with different users' do
@@ -86,13 +86,15 @@ RSpec.describe PairingSessionHandler do
       it 'should create two sessions' do
         expect(PairingSession.count).to be(2)
       end
+
+      it_behaves_like 'created a new valid session'
     end
 
     context 'previous session exists only a few seconds ago' do
       let(:pairing_session) { PairingSession.first }
       
       before do
-        Timecop.freeze(current_time - (threshold - 1.second)) do
+        Timecop.freeze(twenty_nine_seconds_ago) do
           subject.create_or_update_session
         end
 
@@ -109,7 +111,15 @@ RSpec.describe PairingSessionHandler do
       end
 
       it 'should update the end_time to be the current time' do
-        expect(pairing_session.end_time.to_i).to be(current_time.to_i)
+        expect(pairing_session.start_time.to_i).to_not be(pairing_session.end_time.to_i)
+      end
+
+      it 'should still have the same start time' do
+        expect(pairing_session.start_time.to_i).to be(twenty_nine_seconds_ago.to_i)
+      end
+
+      def twenty_nine_seconds_ago
+        current_time - (threshold - 1.second)
       end
     end
   end
