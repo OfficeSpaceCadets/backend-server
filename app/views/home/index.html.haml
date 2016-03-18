@@ -1,30 +1,31 @@
-%div.page-header
-  %h1 Office Space Cadets Pairing
-  %h2 Saturday, March 19, 2016
+- content_for(:content) do
+  %div.page-header
+    %h1 Office Space Cadets Pairing
+    %h2 Saturday, March 19, 2016
 
-%div.main
-  %table.pairing-table
-    %thead
-      %tr
-        %th
-          = 'Pair One'
-        %th
-          = 'Pair Two'
-        %th
-          = 'Session Start'
-        %th
-          = 'Session End'
-        %th
-          = 'Session Duration'
-    - @pairing_sessions.each do |session|
-      %tr
-        %td.user{:class => "#{session[:users][0]}"}
-          = session[:users][0]
-        %td.user{:class => "#{session[:users][0]}"}
-          = session[:users][1]
-        %td.time
-          = session[:start_time]
-        %td.time
-          = session[:end_time]
-        %td.duration
-          = session[:duration]
+  %div.main
+    %table.pairing-table
+      %thead
+        %tr
+          %th
+            = 'Pair One'
+          %th
+            = 'Pair Two'
+          %th
+            = 'Session Start'
+          %th
+            = 'Session End'
+          %th
+            = 'Session Duration'
+      - @pairing_sessions.each do |session|
+        %tr
+          %td.user{:class => "#{session[:users][0]}"}
+            = session[:users][0]
+          %td.user{:class => "#{session[:users][0]}"}
+            = session[:users][1]
+          %td.time
+            = session[:start_time]
+          %td.time
+            = session[:end_time]
+          %td.duration
+            = session[:duration]
