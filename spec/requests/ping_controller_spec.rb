@@ -5,6 +5,8 @@ RSpec.describe 'Api::PingController' do
   let!(:user2) { create :user }
   let(:id1) { user1.id }
   let(:id2) { user2.id }
+  let(:external_id1) { user1.external_id }
+  let(:external_id2) { user2.external_id }
   let(:good_auth_token) { 'super secret' }
   let(:payload) { {} }
   let(:auth_token) { good_auth_token }
@@ -34,8 +36,16 @@ RSpec.describe 'Api::PingController' do
         end
       end
 
+      describe 'with a payload of undefined users' do
+        let(:payload) { { ids: ['monkey'] } }
+
+        it 'returns back a 404' do
+          expect(response.status).to eq(404)
+        end
+      end
+
       describe 'with good payload' do
-        let(:payload) { { ids: [ id1, id2 ] } }
+        let(:payload) { { ids: [ external_id1, external_id2 ] } }
 
         it 'returns back a 201' do
           expect(response.status).to eq(201)
