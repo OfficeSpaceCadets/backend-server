@@ -5,6 +5,7 @@ gem 'mysql2', '~> 0.4.3'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '~> 2.7'
 gem 'haml-rails', '~> 0.9.0'
+gem 'date_helper', '1.0.0'
 
 gem 'turbolinks', '~> 2.5.3'
 gem 'jbuilder', '~> 2.0'
@@ -26,4 +27,3 @@ group :development, :test do
 end
 
 ruby "2.3.0"
-
