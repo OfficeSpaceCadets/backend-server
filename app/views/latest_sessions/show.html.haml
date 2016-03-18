@@ -1,2 +1,9 @@
 - content_for(:content) do
   %h1 Latest session!
+  .latest_session
+    .users
+    .duration
+    .start_time
+
+- content_for(:javascript) do
+  = javascript_include_tag 'latest_sessions'
