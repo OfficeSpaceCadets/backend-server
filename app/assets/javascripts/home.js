@@ -1,5 +1,6 @@
 (function() {
   fetch_todays_sessions();
+  setInterval(fetch_todays_sessions, 5000);
 
   function fetch_todays_sessions() {
     $.getJSON('/api/todays_sessions').done(populate_todays_sessions);
