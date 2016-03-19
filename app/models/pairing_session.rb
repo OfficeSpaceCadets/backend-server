@@ -20,7 +20,7 @@ class PairingSession < ActiveRecord::Base
               where psu.user_id in (#{user_ids.join(',')})
               group by psu.pairing_session_id
            ) number_of_pairs_in_sessions
-           where number_of_pairs_in_sessions.number_pairs > 1
+           where number_of_pairs_in_sessions.number_pairs > 0
         )
         order by ps.end_time desc
         limit 1

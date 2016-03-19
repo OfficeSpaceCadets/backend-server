@@ -79,4 +79,36 @@ RSpec.describe 'Api::PingController' do
       end
     end
   end
+
+  describe 'real' do
+    it 'created pairing session should contain both ids' do
+      payload = { ids: [ external_id1 ] } 
+
+      current_time = Time.now
+
+      Timecop.freeze(current_time - 20.seconds) do
+        post api_ping_path, payload, headers
+      end
+
+      Timecop.freeze(current_time - 15.seconds) do
+        post api_ping_path, payload, headers
+      end
+
+      Timecop.freeze(current_time - 10.seconds) do
+        post api_ping_path, payload, headers
+      end
+
+      Timecop.freeze(current_time - 5.seconds) do
+        post api_ping_path, payload, headers
+      end
+
+      Timecop.freeze(current_time) do
+        post api_ping_path, payload, headers
+      end
+
+      pairing_session = PairingSession.first
+
+      expect(pairing_session.users.pluck :id).to eq([id1])
+    end
+  end
 end

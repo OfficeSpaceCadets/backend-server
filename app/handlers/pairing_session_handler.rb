@@ -4,8 +4,11 @@ class PairingSessionHandler
   end
 
   def create_or_update_session
-    return create_session unless session_already_exists?
-    update_session
+    if session_already_exists?
+      update_session
+    else
+      create_session
+    end
   end
 
   private
