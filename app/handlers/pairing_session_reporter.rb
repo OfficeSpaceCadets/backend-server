@@ -2,13 +2,13 @@ class PairingSessionReporter
   include ActionView::Helpers::DateHelper
 
   def todays_pairs
-    PairingSession.eager_load(:users).map do |session|
+    PairingSession.eager_load(:users).order(end_time: :asc).map do |session|
       transform_data session
     end
   end
 
   def latest_pairs
-    transform_data PairingSession.eager_load(:users).last
+    transform_data PairingSession.eager_load(:users).order(end_time: :desc).limit(1).first
   end
 
   private
