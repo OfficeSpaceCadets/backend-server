@@ -10,4 +10,4 @@ PairingSession.create! users: [bj, lee], start_time: 1.hour.ago, end_time: 90.mi
 PairingSession.create! users: [lee, matt], start_time: 20.minutes.ago, end_time: 80.minutes.ago
 PairingSession.create! users: [matt, rosemary], start_time: 5.minutes.ago, end_time: 70.minutes.ago
 PairingSession.create! users: [rosemary, bj], start_time: 4.minute.ago, end_time: 60.minutes.ago
-PairingSession.create! users: [bj], start_time: 1.minute.ago, end_time: Time.now
+# PairingSession.create! users: [bj], start_time: 1.minute.ago, end_time: Time.now
