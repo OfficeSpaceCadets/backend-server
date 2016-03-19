@@ -7,7 +7,7 @@ lee =      User.create! name: 'Lee', username: 'esnerl', email: 'lee.esner@async
 rosemary = User.create! name: 'Rosemary', username: 'kaskowitzr', email: 'rosemary.kaskoitz@asynchrony.com', external_id: '149_151_178_8_184'
 
 PairingSession.create! users: [bj, lee], start_time: 1.hour.ago, end_time: 90.minutes.ago
-PairingSession.create! users: [lee, matt], start_time: 20.minutes.ago, end_time: Time.now
-PairingSession.create! users: [matt, rosemary], start_time: 5.minutes.ago, end_time: Time.now
-PairingSession.create! users: [rosemary, bj], start_time: 1.minute.ago, end_time: Time.now
-
+PairingSession.create! users: [lee, matt], start_time: 20.minutes.ago, end_time: 80.minutes.ago
+PairingSession.create! users: [matt, rosemary], start_time: 5.minutes.ago, end_time: 70.minutes.ago
+PairingSession.create! users: [rosemary, bj], start_time: 4.minute.ago, end_time: 60.minutes.ago
+PairingSession.create! users: [bj], start_time: 1.minute.ago, end_time: Time.now
