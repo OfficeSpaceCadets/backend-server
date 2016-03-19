@@ -34,7 +34,13 @@ class PairingSessionHandler
   end
 
   def users
-    @users ||= User.where external_id: @user_external_ids
+    @users ||= actual_users
+  end
+
+  def actual_users
+    u = User.where external_id: @user_external_ids
+    u = [u.first, u.first] if u.count == 1
+    u
   end
 
   def user_ids

@@ -110,5 +110,37 @@ RSpec.describe 'Api::PingController' do
 
       expect(pairing_session.users.pluck :id).to eq([id1])
     end
+
+    it 'person walks away and comes back' do
+      payload1 = { ids: [ external_id1, external_id2 ] } 
+      payload2 = { ids: [ external_id1, external_id1 ] } 
+
+      current_time = Time.now
+
+      Timecop.freeze(current_time - 20.seconds) do
+        post api_ping_path, payload1, headers
+      end
+
+      Timecop.freeze(current_time - 15.seconds) do
+        post api_ping_path, payload1, headers
+      end
+
+      Timecop.freeze(current_time - 10.seconds) do
+        post api_ping_path, payload2, headers
+      end
+
+      Timecop.freeze(current_time - 5.seconds) do
+        post api_ping_path, payload2, headers
+      end
+
+      Timecop.freeze(current_time) do
+        post api_ping_path, payload1, headers
+      end
+
+      expect(PairingSession.count).to eq(2)
+
+      expect(PairingSession.first.users.pluck :id).to eq([id1, id2])
+      expect(PairingSession.last.users.pluck :id).to eq([id1])
+    end
   end
 end
