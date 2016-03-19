@@ -22,7 +22,7 @@ body {
   width: 50.0vw;
   margin-left:-25.0vw;
   text-align: center;
-  font-size: 4.5vw;
+  font-size: 3.5vw;
 }
 
 .pair-clock:before {
@@ -36,14 +36,16 @@ body {
 .photos {
   display:flex;
   flex-direction: row;
+  justify-content: center;
   width: 100%;
 }
 
 .photo {
   flex-basis: 50%;
-  flex-grow: 1;
+  flex-grow: 0;
   box-sizing: border-box;
   padding: 2%;
+  transition: all .25s;
 }
 
 .photo > img {
@@ -61,3 +63,8 @@ body {
   font-weight: 100;
 }
 
+.photos .photo.inactive {
+  flex-basis: 0%;
+  padding: 0;
+  overflow: hidden;
+}
